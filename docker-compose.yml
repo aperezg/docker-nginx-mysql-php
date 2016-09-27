@@ -1,0 +1,13 @@
+server:
+    image: nginx:latest
+    ports:
+       - "8080:80"
+    volumes:
+       - ./src:/var/www/deployment
+       - ./nginx/base.conf:/etc/nginx/conf.d/base.conf
+    links:
+       - php
+php:
+    image: php:7-fpm
+    volumes:
+       - ./src:/var/www/deployment
